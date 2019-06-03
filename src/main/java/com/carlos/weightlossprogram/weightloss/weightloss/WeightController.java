@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.inject.Inject;
-import java.math.BigDecimal;
 
 @RestController
 @RequestMapping("/weight")
@@ -20,8 +19,7 @@ public class WeightController {
     }
 
     @PostMapping
-    public Integer getWeight(@RequestBody BigDecimal startingWeight, @RequestBody BigDecimal goalWeight){
-       return weightService.getNumberOfWeeksForWeightLoss(startingWeight, goalWeight);
+    public Integer getWeight(@RequestBody WeightPayload weightPayload){
+       return weightService.getNumberOfWeeksForWeightLoss(weightPayload);
     }
-
 }

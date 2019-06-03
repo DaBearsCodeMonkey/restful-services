@@ -6,13 +6,14 @@ import java.math.BigDecimal;
 @Named
 public class WeightService {
 
-    Integer getNumberOfWeeksForWeightLoss(BigDecimal weight, BigDecimal goalWeight){
+    Integer getNumberOfWeeksForWeightLoss(WeightPayload weightPayload){
         final BigDecimal ONE_PERCENT = new BigDecimal("0.01");
+        BigDecimal tempWeight = weightPayload.getStartingWeight();
         Integer numberOfWeeks = 0;
 
-        while(weight.compareTo(goalWeight) > 0){
+        while(tempWeight.compareTo(weightPayload.getGoalWeight()) > 0){
             numberOfWeeks++;
-            weight = weight.subtract(weight.multiply(ONE_PERCENT));
+            tempWeight = tempWeight.subtract(weightPayload.getStartingWeight().multiply(ONE_PERCENT));
         }
 
         return numberOfWeeks;

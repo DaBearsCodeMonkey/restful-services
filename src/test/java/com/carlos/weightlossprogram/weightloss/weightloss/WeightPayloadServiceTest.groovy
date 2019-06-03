@@ -2,13 +2,14 @@ package com.carlos.weightlossprogram.weightloss.weightloss
 
 import spock.lang.Specification
 
-class WeightServiceTest extends Specification {
+class WeightPayloadServiceTest extends Specification {
     def "GetNumberOfWeeksForWeightLoss"() {
         given:
         def weightService = new WeightService()
+        def weight = new WeightPayload(startingWeight, goalWeight)
 
         when:
-        def actualResult = weightService.getNumberOfWeeksForWeightLoss(startingWeight, goalWeight)
+        def actualResult = weightService.getNumberOfWeeksForWeightLoss(weight)
 
         then:
         expectedResult == actualResult
