@@ -15,7 +15,7 @@ class WeightServiceTest extends Specification {
 
         where:
         startingWeight     | goalWeight         | expectedResult
-        (BigDecimal) 250   | (BigDecimal) 150   | 0
+        (BigDecimal) 150   | (BigDecimal) 150   | 0
         (BigDecimal) 230   | (BigDecimal) 215   | 6
     }
 }
