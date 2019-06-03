@@ -6,10 +6,15 @@ import java.math.BigDecimal;
 @Named
 public class WeightService {
 
-    Integer getNumberOfWeeksForWeightLoss(BigDecimal startingWeight, BigDecimal goalWeight){
-        if(startingWeight.intValue() == 230)
-            return 6;
+    Integer getNumberOfWeeksForWeightLoss(BigDecimal weight, BigDecimal goalWeight){
+        final BigDecimal ONE_PERCENT = new BigDecimal("0.01");
+        Integer numberOfWeeks = 0;
 
-        return 0;
+        while(weight.compareTo(goalWeight) > 0){
+            numberOfWeeks++;
+            weight = weight.subtract(weight.multiply(ONE_PERCENT));
+        }
+
+        return numberOfWeeks;
     }
 }
