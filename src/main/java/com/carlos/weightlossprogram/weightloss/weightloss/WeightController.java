@@ -20,8 +20,8 @@ public class WeightController {
     }
 
     @PostMapping
-    public void getWeight(@RequestBody String weight){
-        weightService.getNumberOfWeeksForWeightLoss(new BigDecimal(weight));
+    public void getWeight(@RequestBody BigDecimal startingWeight, @RequestBody BigDecimal goalWeight){
+        weightService.getNumberOfWeeksForWeightLoss(startingWeight, goalWeight);
     }
 
 }

@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 @Named
 public class WeightService {
 
-    Integer getNumberOfWeeksForWeightLoss(BigDecimal weightLoss){
+    Integer getNumberOfWeeksForWeightLoss(BigDecimal startingWeight, BigDecimal goalWeight){
         return 0;
     }
 }
