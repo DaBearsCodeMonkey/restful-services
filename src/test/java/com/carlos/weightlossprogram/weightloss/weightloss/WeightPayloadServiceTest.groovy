@@ -3,7 +3,7 @@ package com.carlos.weightlossprogram.weightloss.weightloss
 import spock.lang.Specification
 
 class WeightPayloadServiceTest extends Specification {
-    def "GetNumberOfWeeksForWeightLoss"() {
+    def "Given a starting weight and goal weight, return the number of weeks it takes to reach the goal weight"() {
         given:
         def weightService = new WeightService()
         def weight = new WeightPayload(startingWeight, goalWeight)
