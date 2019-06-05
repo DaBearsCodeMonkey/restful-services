@@ -1,12 +1,10 @@
 package com.carlos.weightlossprogram.weightloss.weightloss;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.math.BigDecimal;
 
 public class WeightPayload {
-    @JsonProperty private BigDecimal startingWeight;
-    @JsonProperty private BigDecimal goalWeight;
+    private BigDecimal startingWeight;
+    private BigDecimal goalWeight;
 
     public WeightPayload() {
     }
