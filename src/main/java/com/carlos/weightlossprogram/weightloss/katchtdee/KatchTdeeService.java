@@ -15,13 +15,11 @@ class KatchTdeeService {
         return 0;
     }
 
-   //Weight - (weight * bodyfatPercentage) = LBM
     private BigDecimal getLeanBodyMass(KatchTdeePayload payload){
-        if(payload.getWeight() == 150){
-            return new BigDecimal("105");
-        }
+        BigDecimal weight = BigDecimal.valueOf(payload.getWeight());
+        BigDecimal bodyFatPercentage = BigDecimal.valueOf(payload.getBodyFatPercentage())
+                                                 .divide(new BigDecimal("100"), BigDecimal.ROUND_HALF_UP);
 
-        else
-            return new BigDecimal("121.5");
+        return weight.subtract(weight.multiply(bodyFatPercentage)).setScale(1, BigDecimal.ROUND_HALF_UP);
     }
 }
