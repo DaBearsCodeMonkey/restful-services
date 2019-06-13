@@ -21,6 +21,5 @@ class KatchTdeeServiceTest extends Specification {
         weight          | bodyFat        |   expectedResult
         150             | 30             |   105 as BigDecimal
         270             | 55             |   121.5 as BigDecimal
-
     }
 }
