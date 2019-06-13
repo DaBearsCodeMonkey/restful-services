@@ -1,5 +1,7 @@
 package com.carlos.weightlossprogram.weightloss.katchtdee;
 
+import org.springframework.web.bind.annotation.RequestBody;
+
 import javax.inject.Named;
 import java.math.BigDecimal;
 
@@ -9,12 +11,12 @@ import java.math.BigDecimal;
 @Named
 class KatchTdeeService {
 
-    int getTdee(){
+    int getTdee(KatchTdeePayload payload){
         return 0;
     }
 
    //Weight - (weight * bodyfatPercentage) = LBM
-    private BigDecimal getLeanBodyMass(){
+    private BigDecimal getLeanBodyMass(KatchTdeePayload payload){
         return BigDecimal.ZERO;
     }
 }

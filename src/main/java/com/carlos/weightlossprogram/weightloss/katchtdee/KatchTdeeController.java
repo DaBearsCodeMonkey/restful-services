@@ -1,6 +1,7 @@
 package com.carlos.weightlossprogram.weightloss.katchtdee;
 
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,7 +19,7 @@ public class KatchTdeeController {
     }
 
     @PostMapping
-    public int getTdee(){
-        return katchTdeeService.getTdee();
+    public int getTdee(@RequestBody KatchTdeePayload payload){
+        return katchTdeeService.getTdee(payload);
     }
 }

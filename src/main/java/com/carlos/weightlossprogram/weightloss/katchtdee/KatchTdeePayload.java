@@ -6,6 +6,14 @@ class KatchTdeePayload {
     private int bodyFatPercentage;
     private int weight;
 
+    public KatchTdeePayload() {
+    }
+
+    public KatchTdeePayload(int bodyFatPercentage, int weight) {
+        this.bodyFatPercentage = bodyFatPercentage;
+        this.weight = weight;
+    }
+
     public int getBodyFatPercentage() {
         return bodyFatPercentage;
     }
