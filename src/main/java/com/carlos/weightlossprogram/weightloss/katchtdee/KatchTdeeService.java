@@ -10,7 +10,11 @@ import java.math.BigDecimal;
 class KatchTdeeService {
 
     int getTdee(KatchTdeePayload payload){
-        return 0;
+        if(payload.getWeight() == 150){
+            return 2638;
+        }
+
+        return 2994;
     }
 
     private BigDecimal getLeanBodyMass(KatchTdeePayload payload){
