@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.inject.Inject;
 
 @RestController
-@RequestMapping("/tdee")
+@RequestMapping("/katch")
 public class KatchTdeeController {
 
     private KatchTdeeService katchTdeeService;
