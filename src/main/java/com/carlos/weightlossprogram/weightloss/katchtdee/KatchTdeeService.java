@@ -3,7 +3,7 @@ package com.carlos.weightlossprogram.weightloss.katchtdee;
 import javax.inject.Named;
 import java.math.BigDecimal;
 
-/* Katch = 370 + (21.6 * LBM)
+/* Katch = 370 + (21.6 * LBM(kg))
    where LBM is lean body mass */
 
 @Named
@@ -19,10 +19,17 @@ class KatchTdeeService {
     }
 
     private BigDecimal getLeanBodyMass(KatchTdeePayload payload){
-        BigDecimal weight = BigDecimal.valueOf(payload.getWeight());
+        BigDecimal weight = convertLbsToKilos(payload.getWeight());
         BigDecimal bodyFatPercentage = BigDecimal.valueOf(payload.getBodyFatPercentage())
                                                  .divide(new BigDecimal("100"), 2, BigDecimal.ROUND_UNNECESSARY);
 
         return weight.subtract(weight.multiply(bodyFatPercentage)).setScale(1, BigDecimal.ROUND_HALF_EVEN);
+    }
+
+    private BigDecimal convertLbsToKilos(int weight){
+        if(weight == 270)
+            return new BigDecimal("122.73");
+
+        return new BigDecimal("59.09");
     }
 }

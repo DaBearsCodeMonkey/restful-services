@@ -36,4 +36,20 @@ class KatchTdeeServiceTest extends Specification {
         150             | 30             |   105.0 as BigDecimal
         270             | 55             |   121.5 as BigDecimal
     }
+
+    def "Convert weight in pounds to kilograms"(){
+        given:
+        def myObj = new KatchTdeeService()
+
+        when:
+        def actualResult = myObj.convertLbsToKilos(weight)
+
+        then:
+        expectedResult == actualResult
+
+        where:
+        weight  | expectedResult
+        270     | 122.73 as BigDecimal
+        130     | 59.09 as BigDecimal
+    }
 }
