@@ -1,6 +1,5 @@
 package com.carlos.weightlossprogram.weightloss.katchtdee;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 class KatchTdeePayload {
     private int bodyFatPercentage;
@@ -14,11 +13,11 @@ class KatchTdeePayload {
         this.weight = weight;
     }
 
-    public int getBodyFatPercentage() {
+    int getBodyFatPercentage() {
         return bodyFatPercentage;
     }
 
-    public int getWeight() {
+    int getWeight() {
         return weight;
     }
 }

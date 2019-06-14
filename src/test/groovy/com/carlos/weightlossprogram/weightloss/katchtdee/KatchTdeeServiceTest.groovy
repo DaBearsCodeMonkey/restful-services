@@ -4,6 +4,20 @@ import spock.lang.Specification
 
 class KatchTdeeServiceTest extends Specification {
     def "Given a weight and body fat percentage, return the estimated tdee (daily calories your body burns)"() {
+        given:
+        def myObj = new KatchTdeeService()
+        def katchPayload = new KatchTdeePayload(bodyFat, weight)
+
+        when:
+        def actualResult = myObj.getTdee(katchPayload)
+
+        then:
+        actualResult.equals(expectedResult)
+
+        where:
+        weight       | bodyFat    | expectedResult
+        150          | 30         | 2638
+        270          | 55         | 2994
     }
 
     def "Given a weight and body fat percentage, return the lean body mass (weight - body fat percentage)" (){

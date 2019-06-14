@@ -1,7 +1,5 @@
 package com.carlos.weightlossprogram.weightloss.katchtdee;
 
-import org.springframework.web.bind.annotation.RequestBody;
-
 import javax.inject.Named;
 import java.math.BigDecimal;
 
@@ -18,8 +16,8 @@ class KatchTdeeService {
     private BigDecimal getLeanBodyMass(KatchTdeePayload payload){
         BigDecimal weight = BigDecimal.valueOf(payload.getWeight());
         BigDecimal bodyFatPercentage = BigDecimal.valueOf(payload.getBodyFatPercentage())
-                                                 .divide(new BigDecimal("100"), BigDecimal.ROUND_HALF_UP);
+                                                 .divide(new BigDecimal("100"), 2, BigDecimal.ROUND_UNNECESSARY);
 
-        return weight.subtract(weight.multiply(bodyFatPercentage)).setScale(1, BigDecimal.ROUND_HALF_UP);
+        return weight.subtract(weight.multiply(bodyFatPercentage)).setScale(1, BigDecimal.ROUND_HALF_EVEN);
     }
 }
