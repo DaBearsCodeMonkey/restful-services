@@ -3,53 +3,55 @@ package com.carlos.weightlossprogram.weightloss.katchtdee
 import spock.lang.Specification
 
 class KatchTdeeServiceTest extends Specification {
-    def "Given a weight and body fat percentage, return the estimated tdee (daily calories your body burns)"() {
-        given:
-        def myObj = new KatchTdeeService()
-        def katchPayload = new KatchTdeePayload(bodyFat, weight)
-
-        when:
-        def actualResult = myObj.getTdee(katchPayload)
-
-        then:
-        actualResult.equals(expectedResult)
-
-        where:
-        weight       | bodyFat    | expectedResult
-        150          | 30         | 2638
-        270          | 55         | 2994
-    }
-
     def "Given a weight and body fat percentage, return the lean body mass (weight - body fat percentage)" (){
         given:
         def myObj = new KatchTdeeService()
-        def katchPayload = new KatchTdeePayload(bodyFat, weight)
 
         when:
-        def actualResult = myObj.getLeanBodyMass(katchPayload)
+        def actualResult = myObj.getLeanBodyMass(weight, bodyFatPercentage)
 
         then:
-        actualResult.equals(expectedResult)
+        actualResult == expectedResult
 
         where:
-        weight          | bodyFat        |   expectedResult
-        150             | 30             |   105.0 as BigDecimal
-        270             | 55             |   121.5 as BigDecimal
+        weight                       | bodyFatPercentage        |   expectedResult
+        75 as BigDecimal             | 0.20 as BigDecimal       |   60.0 as BigDecimal
+        100 as BigDecimal            | 0.55 as BigDecimal       |   45.0 as BigDecimal
     }
 
-    def "Convert weight in pounds to kilograms"(){
+    def "Convert bodyFat integer to percentage"(){
         given:
         def myObj = new KatchTdeeService()
 
         when:
-        def actualResult = myObj.convertLbsToKilos(weight)
+        def actualResult = myObj.convertBodyFatToPercent(bodyFat)
 
         then:
-        expectedResult == actualResult
+        actualResult == expectedResult
 
         where:
-        weight  | expectedResult
-        270     | 122.73 as BigDecimal
-        130     | 59.09 as BigDecimal
+        bodyFat     | expectedResult
+        30          | 0.30 as BigDecimal
+        60          | 0.60 as BigDecimal
+        23          | 0.23 as BigDecimal
+        5           | 0.05 as BigDecimal
+        95          | 0.95 as BigDecimal
+    }
+
+    def "Get tdee using Katch Formula"(){
+        given:
+        def myObj = new KatchTdeeService()
+
+        when:
+        def actualResult = myObj.katchFormula(leanBodyMass)
+
+        then:
+        actualResult == expectedResult
+
+        where:
+        leanBodyMass                 | expectedResult
+        70 as BigDecimal             | 1882
+        120 as BigDecimal            | 2962
+        87 as BigDecimal             | 2249
     }
 }

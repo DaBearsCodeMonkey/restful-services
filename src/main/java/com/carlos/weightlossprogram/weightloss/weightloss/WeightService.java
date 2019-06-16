@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 public class WeightService {
 
     Integer getNumberOfWeeksForWeightLoss(WeightPayload weightPayload){
-        final BigDecimal ONE_PERCENT = new BigDecimal("0.01");
+        final BigDecimal ONE_PERCENT = BigDecimal.valueOf(0.01);
         BigDecimal tempWeight = weightPayload.getStartingWeight();
         Integer numberOfWeeks = 0;
 

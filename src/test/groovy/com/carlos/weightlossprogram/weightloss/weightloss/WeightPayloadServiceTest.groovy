@@ -6,17 +6,16 @@ class WeightPayloadServiceTest extends Specification {
     def "Given a starting weight and goal weight, return the number of weeks it takes to reach the goal weight"() {
         given:
         def weightService = new WeightService()
-        def weight = new WeightPayload(startingWeight, goalWeight)
 
         when:
-        def actualResult = weightService.getNumberOfWeeksForWeightLoss(weight)
+        def actualResult = weightService.getNumberOfWeeksForWeightLoss(new WeightPayload(startingWeight, goalWeight))
 
         then:
         expectedResult == actualResult
 
         where:
-        startingWeight     | goalWeight         | expectedResult
-        (BigDecimal) 150   | (BigDecimal) 150   | 0
-        (BigDecimal) 230   | (BigDecimal) 215   | 7
+        startingWeight      | goalWeight          | expectedResult
+        150 as BigDecimal   | 150 as BigDecimal   | 0
+        230 as BigDecimal   | 215 as BigDecimal   | 7
     }
 }
